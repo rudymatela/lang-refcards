@@ -37,6 +37,8 @@ FASTPDFLATEX = $(PDFLATEX) -draftmode
 
 all: pl-refcard.pdf
 
+2x: pl-refcard-2x.pdf
+
 # Cleanup rules
 
 .PHONY: clean cleanauxs cleanfigs
