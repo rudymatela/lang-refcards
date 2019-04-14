@@ -1,0 +1,187 @@
+%% threecols.sty
+%% Copyright 2014  Rudy Matela
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% The Current Maintainer of this work is Rudy Matela.
+%
+% This work consists of the file threecols.sty
+%
+%
+% To use this package just:
+% \usepackage{threecols} % or \RequirePackage{threecols}
+% ...
+% \begin{document}\threecols
+%
+% This will make the document three columns in a similar way that \twocolumn
+% makes the document two columns.
+%
+% This was made because the ``multicols'' package is intended to make multi
+% columns in parts of the document (not in it as a whole.  This might be a
+% better solution.
+%
+%
+% NOTE:
+% This is an ugly hack.  Use with caution.
+%
+% This probably does not work with floats: all the commands that output floats
+% would have to be redefined.
+%
+% As this is based on the redefinition of the \@opcol (output column) command,
+% this is likely to break in future LaTeX versions as the internal workings
+% might change.
+%
+% If you're reading this in the future because the \threecolumn command broke,
+% you'll probably have to copy-paste the original definition of \@opcol,
+% \twocolumn and \@outputdblcolumn and start converting over.  It is not that
+% hard, it only took me a couple of hours.  :-)
+%
+% This was tested on texlive-2014.34872 with latex-base 2014-10-12.
+% The definitions below we're based on "latex.ltx" from latex-base 2014-10-12.
+
+\ProvidesPackage{threecols}[2014/11/03 Definition of threecolumn command (A hack)]
+
+\newif \if@threecolumn   \@threecolumnfalse
+\newif \if@firstcolumns  \@firstcolumnsfalse
+\newbox \@centercolumn
+
+\def \threecolumn {% based on \twocolumn (from latex.ltx)
+  \clearpage
+  \global\columnwidth\textwidth
+  \global\advance\columnwidth-\columnsep
+  \global\divide\columnwidth\thr@@ % columnwidth / 3
+  \global\hsize\columnwidth
+  \global\linewidth\columnwidth
+  \global\@threecolumntrue % we are now in a three column format
+  \global\@firstcolumntrue % we start with the first column
+  \global\@firstcolumnstrue % and also start with the first columns
+  \col@number \thr@@ % 3 columns
+  \@ifnextchar [\@topnewpage\@floatplacement
+}
+
+% Redefinition of the standard ``output column'' command supporting 3 columns.
+\def \@opcol {% originally from latex.ltx
+  \if@threecolumn% we are in three columns?
+    \@outputtplcol% yes, output in 3 columns
+  \else% do as usual
+    \if@twocolumn
+      \@outputdblcol
+    \else
+      \@outputpage
+    \fi
+  \fi%
+  \global \@mparbottom \z@ \global \@textfloatsheight \z@
+  \@floatplacement
+}
+
+
+% Output three columns
+\def\@outputtplcol{% based on \@outputdblcol (from latex.ltx)
+  \if@firstcolumns% are we typesetting the first 2 columns?
+    \if@firstcolumn% yes, is this the left or center column?
+      \global \@firstcolumnfalse
+      \global \setbox\@leftcolumn \box\@outputbox
+    \else
+      \global \@firstcolumnsfalse
+      \global \setbox\@centercolumn \box\@outputbox
+    \fi
+  \else
+    \global \@firstcolumntrue
+    \global \@firstcolumnstrue
+    \setbox\@outputbox \vbox {%
+                         \hb@xt@\textwidth {%
+                           \hb@xt@\columnwidth {%
+                             \box\@leftcolumn \hss}%
+                           \hfil
+                           {\normalcolor\vrule \@width\columnseprule}%
+                           \hfil
+                           \hb@xt@\columnwidth {% we also need a center column:
+                             \box\@centercolumn \hss}%
+                           \hfil% and an extra separator
+                           {\normalcolor\vrule \@width\columnseprule}%
+                           \hfil
+                           \hb@xt@\columnwidth {%
+                             \box\@outputbox \hss}%
+                                             }%
+                              }%
+    \@combinedblfloats
+    \@outputpage
+    \begingroup
+      \@dblfloatplacement
+      \@startdblcolumn
+      \@whilesw\if@fcolmade \fi
+        {\@outputpage
+         \@startdblcolumn}%
+    \endgroup
+  \fi
+}
+
+
+% Redefinition of standard clear page supporting 3 columns
+\def \@doclearpage {% originally from latex.ltx
+     \ifvoid\footins
+       \ifvbox\@kludgeins
+         {\setbox \@tempboxa \box \@kludgeins}%
+       \fi
+       \setbox\@tempboxa\vsplit\@cclv to\z@ \unvbox\@tempboxa
+       \setbox\@tempboxa\box\@cclv
+       \xdef\@deferlist{\@toplist\@botlist\@deferlist}%
+       \global \let \@toplist \@empty
+       \global \let \@botlist \@empty
+       \global \@colroom \@colht
+       \ifx \@currlist\@empty
+       \else
+          \@latexerr{Float(s) lost}\@ehb
+          \global \let \@currlist \@empty
+       \fi
+       \@makefcolumn\@deferlist
+       \@whilesw\if@fcolmade \fi{\@opcol\@makefcolumn\@deferlist}%
+       \if@twocolumn
+         \if@firstcolumn
+           \xdef\@dbldeferlist{\@dbltoplist\@dbldeferlist}%
+           \global \let \@dbltoplist \@empty
+           \global \@colht \textheight
+           \begingroup
+              \@dblfloatplacement
+              \@makefcolumn\@dbldeferlist
+              \@whilesw\if@fcolmade \fi{\@outputpage
+                                        \@makefcolumn\@dbldeferlist}%
+           \endgroup
+         \else
+           \vbox{}\clearpage
+         \fi
+       \fi
+       \if@threecolumn % Are we in three columns?
+         \if@firstcolumns % Do the same thing for three columns
+           \@makefcolumn\@deferlist
+           \@whilesw\if@fcolmade \fi{\@opcol\@makefcolumn\@deferlist}%
+           \if@firstcolumn
+             \xdef\@dbldeferlist{\@dbltoplist\@dbldeferlist}%
+             \global \let \@dbltoplist \@empty
+             \global \@colht \textheight
+             \begingroup
+                \@dblfloatplacement
+                \@makefcolumn\@dbldeferlist
+                \@whilesw\if@fcolmade \fi{\@outputpage
+                                          \@makefcolumn\@dbldeferlist}%
+             \endgroup
+           \else
+             \vbox{}\clearpage
+           \fi
+         \else
+           \vbox{}\clearpage
+         \fi
+       \fi % We're done!
+     \else
+       \setbox\@cclv\vbox{\box\@cclv\vfil}%
+       \@makecol\@opcol
+       \clearpage
+     \fi
+}
+
