@@ -4,7 +4,7 @@ Language Reference Cards
 This repository is a collection of Reference Cards (Cheat Sheets) for (human)
 languages.  It currently includes:
 
-* The [Polish Language Reference Card] -- [version 0.2]
+* The [Polish Language Reference Card] -- [version 0.3]
 
 The LaTeX code is based on the [Concise Cheat Sheets] project.  This project
 has a copy of the `refcard.cls` file, refer to the [Concise Cheat Sheets]
@@ -32,6 +32,6 @@ Features
 
 
 [Polish Language Reference Card]: https://matela.com.br/pl-refcard.pdf
-[version 0.2]: https://github.com/rudymatela/lang-cheat-sheets/releases/download/pl-v1.1/pl-refcard--1.1.pdf
+[version 0.3]: https://github.com/rudymatela/lang-refcards/releases/download/pl-v0.3/pl-refcard-0.3.pdf
 [Concise Cheat Sheets]: https://github.com/rudymatela/concise-cheat-sheets
 [C Reference Card]: http://www.math.brown.edu/~jhs/ReferenceCards/CRefCard.v2.2.pdf
