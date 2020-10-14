@@ -39,11 +39,16 @@ all: pl-refcard.pdf
 
 2x: pl-refcard-2x.pdf
 
+mindmap: pl-mindmap.pdf
+
+pl-mindmap.pdf:
+	fdp -Tpdf pl-mindmap.dot > pl-mindmap.pdf
+
 # Cleanup rules
 
 .PHONY: clean cleanauxs cleanfigs
 clean: cleanauxs cleanfigs
-	rm -f pl-refcard.pdf pl-refcard-2x.pdf
+	rm -f pl-refcard.pdf pl-refcard-2x.pdf pl-mindmap.pdf
 
 cleanauxs:
 	rm -rf tmp

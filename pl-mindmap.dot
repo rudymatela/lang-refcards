@@ -1,0 +1,57 @@
+// Polish Verbs Mindmap Graphviz file
+//
+// Copyright 2020 Rudy Matela
+//
+// This text is available under
+// the Creative Commons Attribution-ShareAlike 3.0 Licence
+// or (at your option), the GNU Free Documentation License version 1.3 or Later.
+//
+// This was a fun experiment, but it is not very useful.
+digraph G {
+	do -> dochodzić -> chodzić
+	do -> dodać -> dać
+	do -> dodawać -> dawać
+	do -> dojść -> iść
+	nad -> nadchodzić -> chodzić
+	nad -> nadejść -> iść
+	od -> odchodzić -> chodzić
+	od -> oddać -> dać
+	od -> oddawać -> dawać
+	od -> odejść -> iść
+	po -> pochodzić -> chodzić
+	po -> podać -> dać
+	po -> podawać -> dawać
+	po -> póiść -> iść
+	po -> pomagać -> magać
+	po -> pomóc -> móc
+	prze -> przebyć -> być
+	prze -> przebywać -> bywać
+	prze -> przechodzić -> chodzić
+	prze -> przejść -> iść
+	przy -> przybyć -> być
+	przy -> przybywać -> bywać
+	przy -> przychodzić -> chodzić
+	przy -> przyjść -> iść
+	w -> wchodzić -> chodzić
+	w -> wejść -> iść
+	"wy-" -> wybierać
+	"wy-" -> wybrać -> brać
+	"wy-" -> wychodzić -> chodzić
+	"wy-" -> wydać -> dać
+	"wy-" -> wydawać -> dawać
+	"wy-" -> wyjść -> iść
+	"za-" -> zadać -> dać
+	"za-" -> zadawać -> dawać
+	"za-" -> zarabiać -> rabiać
+	"za-" -> zarobić -> robić
+	"z-" -> schodzić -> chodzić
+	"z-" -> zdać -> dać
+	"z-" -> zdawać -> dawać
+	"z-" -> zejść -> iść
+	"z-" -> zrobić -> robić
+	prze -> sprzedać -> dać
+	prze -> sprzedawać -> dawać
+	bywać [label="&quot;bywać&quot;"]
+	magać [label="&quot;magać&quot;"]
+	rabiać [label="&quot;rabiać&quot;"]
+}
