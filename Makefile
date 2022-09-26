@@ -35,9 +35,9 @@ FASTPDFLATEX = $(PDFLATEX) -draftmode
 
 # Making Rules
 
-all: pl-refcard.pdf
+all: pl-refcard.pdf sv-refcard.pdf
 
-2x: pl-refcard-2x.pdf
+2x: pl-refcard-2x.pdf sv-refcard-2x.pdf
 
 mindmap: pl-mindmap.pdf
 

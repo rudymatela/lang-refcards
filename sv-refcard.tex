@@ -1,0 +1,100 @@
+%% sv-refcard.tex
+%
+% Copyright 2022 Rudy Matela
+%
+% This text is available under (at your option):
+%   * Creative Commons Attribution-ShareAlike 3.0 Licence
+%   * GNU Free Documentation License version 1.3 or Later
+%
+
+\documentclass[12pt]{refcard}
+\usepackage[T1]{fontenc}
+\usepackage[swedish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+\usepackage{tipa}
+\usepackage{wasysym}
+\usepackage[hidelinks]{hyperref}
+\geometry{a4paper,landscape,nohead,includefoot,margin=18pt,left=18pt,right=18pt,bottom=32pt,footskip=16pt}
+%\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{selinput}
+
+\title{Swedish Language Reference Card}
+
+\cright{
+	\scriptsize
+	~~ Copyright 2022, Rudy Matela --- compiled \today{} \\
+	~~ \url{https://matela.com.br/sv-refcard.pdf} ~ \url{https://github.com/rudymatela/lang-refcards}
+}{
+	\scriptsize
+	This text is available under
+	the Creative Commons Attribution-ShareAlike 3.0 Licence, ~ \\
+	\textbf{or} (at your option), the GNU Free Documentation License version 1.3 or Later.
+}
+\makeatletter
+\cfoot{\scriptsize\@title{}\\v0.0}
+\makeatother
+
+\newcommand{\singlec}[1]{\multicolumn{1}{c}{#1}}
+\newcommand{\doublec}[1]{\multicolumn{2}{c}{#1}}
+\newcommand{\doublel}[1]{\multicolumn{2}{l}{#1}}
+\newcommand{\doubler}[1]{\multicolumn{2}{r}{#1}}
+\newcommand{\triplec}[1]{\multicolumn{3}{c}{#1}}
+\newcommand{\quadruplel}[1]{\multicolumn{4}{l}{#1}}
+\newcommand{\quadrupler}[1]{\multicolumn{4}{r}{#1}}
+
+
+\begin{document}\centering
+
+\maketitle
+\vspace{-1ex}
+Referenskort för Svenskt Språk
+
+\subsubsection{Användbara fraser -- Useful phrases}
+\vspace{-1ex}
+\begin{tabular}{ll}
+ja                     & yes                            \\
+nej                    & no                             \\[1ex]
+
+Hej!                   & Hi!                            \\
+Hej då!                & Bye!                           \\
+God morgon.            & Good morning.                  \\
+God dag.               & Good day. \emph{(formal)}      \\
+God kväll.             & Good evening. \emph{(formal)}  \\[1ex]
+
+tack                   & thanks                         \\
+tack                   & please                         \\
+snälla                 & please                         \\
+tack tack              & thanks \emph{(informal)}       \\
+varsågod               & You're welcome.                \\[1ex]
+
+ursäkta                & I'm sorry. / Excuse me.        \\[1ex]
+
+välkommen              & Welcome.                       \\[1ex]
+\end{tabular}
+
+\pagebreak
+
+\subsubsection{Nummer, Siffra -- Numbers}
+\vspace{-1ex}
+\begin{tabular}{r@{~~}l@{\hspace{1em}}r@{~~}l@{\hspace{1em}}r@{~~}l@{\hspace{1em}}r@{~~}l@{\hspace{1em}}r@{~~}l}
+  $+$ & plus  & $1$ & en, ett & $4$ & fyra   & $7$ & sju      \\
+  $-$ & minus & $2$ & två     & $5$ & fem    & $8$ & åtta     \\
+  $0$ & noll  & $3$ & tre     & $6$ & sex    & $9$ & nio      \\
+\end{tabular}\\[1ex]
+\begin{tabular}{rl@{\hspace{2em}}rl}
+10 & tio              &   20 & tjugo            \\
+11 & elva             &   30 & trettio          \\
+12 & tolv             &   40 & fyrtio           \\
+13 & tretton          &   50 & femtio           \\
+14 & fjorton          &   60 & sextio           \\
+15 & femton           &   70 & sjuttio          \\
+16 & sexton           &   80 & åttio            \\
+17 & sjutton          &   90 & nittio           \\
+18 & arton            &  100 & hundra           \\
+19 & nitton           & 1000 & tusen            \\
+\end{tabular}
+
+
+\end{document}
