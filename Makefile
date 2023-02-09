@@ -19,6 +19,17 @@ QUIET = ./bin/quiet
 PDFLATEX = $(QUIET) pdflatex -halt-on-error -file-line-error -output-directory tmp
 FASTPDFLATEX = $(PDFLATEX) -draftmode
 
+# Making Rules
+
+all: pl-refcard.pdf sv-refcard.pdf
+
+2x: pl-refcard-2x.pdf sv-refcard-2x.pdf
+
+mindmap: pl-mindmap.pdf
+
+pl-mindmap.pdf:
+	fdp -Tpdf pl-mindmap.dot > pl-mindmap.pdf
+
 %.pdf: %.tex
 	@mkdir -p tmp
 	$(FASTPDFLATEX) $<
@@ -41,17 +52,6 @@ sv-refcard-2x.pdf: sv-refcard.pdf
 	pdfunite tmp/2x/90.pdf tmp/2x/90.pdf tmp/2x/united.pdf
 	./bin/quiet pdfnup tmp/2x/united.pdf -o $@
 	rm -r tmp/2x
-
-# Making Rules
-
-all: pl-refcard.pdf sv-refcard.pdf
-
-2x: pl-refcard-2x.pdf sv-refcard-2x.pdf
-
-mindmap: pl-mindmap.pdf
-
-pl-mindmap.pdf:
-	fdp -Tpdf pl-mindmap.dot > pl-mindmap.pdf
 
 # Cleanup rules
 
