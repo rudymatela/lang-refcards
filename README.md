@@ -33,6 +33,7 @@ Features
 
 
 [Polish Language Reference Card]: https://matela.com.br/pl-refcard.pdf
+[Swedish Language Reference Card]: https://matela.com.br/sv-refcard.pdf
 [version 0.6]: https://github.com/rudymatela/lang-refcards/releases/download/pl-v0.6/pl-refcard-0.6.pdf
 [Concise Cheat Sheets]: https://github.com/rudymatela/concise-cheat-sheets
 [C Reference Card]: http://www.math.brown.edu/~jhs/ReferenceCards/CRefCard.v2.2.pdf
