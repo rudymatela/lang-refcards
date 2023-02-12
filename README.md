@@ -5,6 +5,7 @@ This repository is a collection of Reference Cards (Cheat Sheets) for (human)
 languages.  It currently includes:
 
 * The [Polish Language Reference Card] -- [version 0.6]
+* The [Swedish Language Reference Card] -- version 0.2
 
 The LaTeX code is based on the [Concise Cheat Sheets] project.  This project
 has a copy of the `refcard.cls` file, refer to the [Concise Cheat Sheets]
